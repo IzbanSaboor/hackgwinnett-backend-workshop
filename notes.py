@@ -15,6 +15,9 @@ setup:
 - ^^ explain what pip is and explain that python is required for native setups
 '''
 
+'''
+NOTE: To run the client on replit, navigate to 'shell' -> 'python client.py'
+'''
 
 
 
