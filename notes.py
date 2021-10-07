@@ -143,3 +143,63 @@ payload = {
 
 r = requests.post("https://HackGwinnett-Backend-Workshop.hershyz.repl.co/put_name", json=payload)
 print(r.text)
+
+
+
+
+# get request iterating through our arrays
+
+# -- main.py (server)
+from flask import Flask, request
+import random
+
+app = Flask(__name__)
+
+fnames = []
+lnames = []
+
+@app.route("/")
+def home():
+  return "hello flask!"
+
+@app.route("/put_name", methods=["POST"])
+def put_name():
+  data = request.get_json()
+  fname = data['fname']
+  lname = data['lname']
+  fnames.append(fname)
+  lnames.append(lname)
+  return "added " + str(fname) + ", " + str(lname)
+
+@app.route("/get_last_name", methods=["GET"])
+def get_last_name():
+  data = request.get_json()
+  fname = str(data['fname'])
+  for i in range(0, len(fnames)):
+    if fnames[i] == fname:
+      return lnames[i]
+  return "could not find user!"
+
+if __name__ == "__main__":
+  app.run(host='0.0.0.0', port=random.randint(2000, 9000))
+
+# client.py (adding users, post)
+import requests
+
+payload = {
+  "fname": "john",
+  "lname": "doe"
+}
+
+r = requests.post("https://HackGwinnett-Backend-Workshop.hershyz.repl.co/put_name", json=payload)
+print(r.text)
+
+# client.py (getting users, get)
+import requests
+
+payload = {
+  "fname": "john",
+}
+
+r = requests.get("https://HackGwinnett-Backend-Workshop.hershyz.repl.co/get_last_name", json=payload)
+print(r.text)
