@@ -16,7 +16,9 @@ setup:
 '''
 
 '''
-NOTE: To run the client on replit, navigate to 'shell' -> 'python client.py'
+NOTES:
+- To run the client on replit, navigate to 'shell' -> 'python client.py'
+- link: https://replit.com/@hershyz/HackGwinnett-Backend-Workshop#main.py
 '''
 
 
