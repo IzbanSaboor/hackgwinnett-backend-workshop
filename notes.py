@@ -52,7 +52,7 @@ def home():
   return "hello flask!"
 
 @app.route("/get_endpoint", methods=["GET"])
-def waby():
+def get_endpoint():
   return "hello client!"
 
 if __name__ == "__main__":
